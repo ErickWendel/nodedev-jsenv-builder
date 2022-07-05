@@ -50,3 +50,10 @@ Even if you develop/compile Node.js frequently, every time V8 is updated, it tak
     > ./node -v
 
   -
+
+
+  docker build -t node-devjs-builder:v16.x-staging .
+  docker run --name node-devjs-builder -v $(pwd)/node:/node -it node-devjs-builder bash
+  time docker cp node-devjs-builder:/node node
+  
+  #make -j6  13030.26s user 1862.09s system 148% cpu 2:46:54.66 total
