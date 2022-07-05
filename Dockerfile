@@ -16,6 +16,3 @@ RUN ./configure --ninja --node-builtin-modules-path $(pwd)
 RUN make -j8
 
 CMD ./node -v
-
-
-# docker run -it ubuntu:18.04 bash

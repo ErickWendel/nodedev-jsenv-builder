@@ -53,7 +53,23 @@ Even if you develop/compile Node.js frequently, every time V8 is updated, it tak
 
 
   docker build -t node-devjs-builder:v16.x-staging .
-  docker run --name node-devjs-builder -v $(pwd)/node:/node -it node-devjs-builder bash
-  time docker cp node-devjs-builder:/node node
+  docker run -it --name node-devjs-builder node-devjs-builder:v16.x-staging bash
   
-  #make -j6  13030.26s user 1862.09s system 148% cpu 2:46:54.66 total
+  another terminal:
+    time docker cp node-devjs-builder:/node node
+    docker cp node-devjs-builder:/node node  12.35s user 25.61s system 36% cpu 1:43.97 total
+
+  docker stop node-devjs-builder && docker rm node-devjs-builder
+
+  docker run --name node-devjs-builder -v $(pwd)/node:/node -it node-devjs-builder bash
+    ./node -v
+
+    // make some change on test/parallel/test-stream-duplex-from.js
+
+    ./node test/parallel/test-stream-duplex-from.js
+
+
+  before:
+   13030.26s user 1862.09s system 148% cpu 2:46:54.66 total
+  after:
+   12.35s user 25.61s system 36% cpu 1:43.97 total
