@@ -2,7 +2,7 @@
 
 This repo was meant to save time when working on the Node.js project. 
 
-The idea is to avoid compiling the project all the time locally (which takes ours) by just downloading a docker container image with the given tag.
+The idea is to avoid compiling the project all the time locally (which takes hours) by just downloading a docker container image with the given tag.
 
 The example below will pull a `v16.x-staging` branch and you can check the pipeline on [Dockerfile](./Dockerfile).
 
